@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download APK Unchek</title>
+<style>
+  :root {
+    --bg-color: #eef2f5;
+    --primary-blue: #2d82d4;
+    --primary-hover: #1e6cb5;
+    --text-dark: #333333;
+    --text-muted: #7b8b9a;
+    --card-bg: #ffffff;
+    --border-radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  
+  body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px 15px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* HEADER BAR */
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+  }
+  .logo-area {
+    background: linear-gradient(135deg, #3b8ee1, #1e6cb5);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(45, 130, 212, 0.3);
+  }
+
+  /* BANNER GAMBAR (VIA LINK) */
+  .banner-container {
+    width: 100%;
+    height: 180px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border: 2px solid #fff;
+    position: relative;
+  }
+  
+  .banner-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  /* KARTU UTAMA */
+  .main-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    text-align: center;
+    position: relative;
+  }
+
+  /* LOGO APLIKASI (VIA LINK) */
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    margin: -60px auto 10px;
+    border-radius: 20px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 3px solid #fff;
+    overflow: hidden;
+  }
+  
+  .app-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .developer {
+    color: var(--text-muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 24px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+
+  /* BADGE UPDATE */
+  .update-badge {
+    display: inline-block;
+    background: #fff3e0;
+    color: #e67e22;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #ffe0b2;
+    margin-bottom: 20px;
+  }
+  .update-badge::before {
+    content: '●';
+    margin-right: 5px;
+    font-size: 10px;
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .info-title {
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+  }
+  .info-row:last-child { margin-bottom: 0; }
+  .info-row span.value {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+  .text-green { color: #27ae60 !important; }
+
+  .description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  /* TOMBOL DOWNLOAD */
+  .btn-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(45, 130, 212, 0.4);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-download:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45, 130, 212, 0.5);
+  }
+  .btn-note {
+    font-size: 12px;
+    color: #999;
+    margin-top: 12px;
+  }
+
+  /* CARA INSTALL */
+  .install-guide {
+    text-align: left;
+    margin-top: 30px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+  }
+  .guide-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+  .step {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+  }
+  .step-num {
+    background: #e3f2fd;
+    color: var(--primary-blue);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #a0aec0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- Header Bar -->
+
+  <!-- BANNER GAMBAR (Ganti Link di dalam src) -->
+  <div class="banner-container">
+    <img src="https://files.catbox.moe/82epub.jpg" alt="Banner Aplikasi">
+  </div>
+
+  <!-- Kartu Utama Download -->
+  <div class="main-card">
+    
+    <!-- LOGO APLIKASI (Ganti Link di dalam src) -->
+    <div class="app-icon">
+      <img src="https://files.catbox.moe/s0h7i5.png" alt="Logo Aplikasi">
+    </div>
+
+    <div class="developer">Vanzz Hosting</div>
+    <h1>Apk Key Jasteb</h1>
+
+    <div class="update-badge">
+      UPDATE TERSEDIA
+    </div>
+
+    <!-- Info Pembaruan -->
+    <div class="info-box">
+      <div class="info-title">INFO PEMBARUAN</div>
+      <div class="info-row">
+        <span>Versi Baru</span>
+        <span class="value">1.0.0</span>
+      </div>
+      <div class="info-row">
+        <span>Status</span>
+        <span class="value text-green">Wajib Update</span>
+      </div>
+      <div class="info-row">
+        <span>Ukuran</span>
+        <span class="value">16 MB</span>
+      </div>
+    </div>
+
+    <!-- Deskripsi -->
+    <div class="description">
+      Hai member! Ada <strong>pembaruan penting</strong> untuk APK Unchek.<br>
+      Silakan download dan install versi terbaru untuk melanjutkan.
+    </div>
+
+    <!-- TOMBOL DOWNLOAD (Ganti Link di dalam href) -->
+    <a href="https://link-download-apk-anda.com/aplikasi.apk" class="btn-download" target="_blank">
+      Download Sekarang
+    </a>
+    <div class="btn-note">Tap tombol di atas — file APK akan langsung terunduh</div>
+
+    <!-- Cara Install -->
+    <div class="install-guide">
+      <div class="guide-title">CARA INSTALL</div>
+      
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Download APK lewat tombol di atas</div>
+      </div>
+      
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Buka file APK yang sudah terunduh di folder Download</div>
+      </div>
+      
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Jika muncul peringatan "Install dari sumber tidak dikenal" — izinkan</div>
+      </div>
+      
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Tap Install, tunggu selesai, lalu buka APK seperti biasa</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © Vanzz Hosting — Apk Key Jasteb
+  </div>
+
+</div>
+
+</body>
+</html>
